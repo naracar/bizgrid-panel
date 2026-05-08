@@ -1,23 +1,31 @@
-# BizGrid Panel
+# 📋 BizGrid Panel
 
 Advanced Grafana table panel with draggable column resize and enhanced features.
 Actively maintained fork of the abandoned Business Table plugin by Volkov Labs.
 
-## Features
+## 🧰 Features
 - Draggable column resize
 - HTML links open in new tab
 - JSON eye icon show/hide toggle
 - All original Business Table features (inline editing, nested rows, pagination, etc.)
 
-## Requirements
+## 📋 Requirements
 - Grafana >= 11.0.0
 
-## Installation
+## 🚀 Installation
 Search for **BizGrid** in the Grafana plugin catalog.
 
-## Attribution
+### 🖥️ Grafana CLI
+
+Run the following command in your terminal:
+
+```bash
+grafana cli plugins install volkovlabs-table-panel
+```
+
+## ✨ Attribution
 Based on [Business Table](https://github.com/volkovlabs/business-table)
 by Volkov Labs, licensed under Apache 2.0.
 
-## License
+## 📜 License
 Apache License 2.0 - see [LICENSE](LICENSE)
