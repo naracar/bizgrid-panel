@@ -27,7 +27,8 @@ jobs:
 
       - name: Build plugin
         run: npm run build
-
+    
+      # TODO: Uncomment this when we have a way to sign the plugin
       # - name: Sign plugin
       #   run: npx --yes @grafana/sign-plugin@latest
       #   env:
