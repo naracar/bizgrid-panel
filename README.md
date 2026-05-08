@@ -20,7 +20,7 @@ Search for **BizGrid** in the Grafana plugin catalog.
 Run the following command in your terminal:
 
 ```bash
-grafana cli plugins install volkovlabs-table-panel
+grafana cli plugins install bizgrid-panel
 ```
 
 ## ✨ Attribution
