@@ -72,7 +72,7 @@
     "node": ">=20"
   },
   "license": "Apache-2.0",
-  "name": "bizgrid-panel",
+  "name": "narayanadev97-bizgrid-panel",
   "scripts": {
     "build": "webpack -c ./webpack.config.ts --env production",
     "dev": "webpack -w -c ./webpack.config.ts --env development",
