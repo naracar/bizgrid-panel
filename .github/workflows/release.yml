@@ -28,10 +28,10 @@ jobs:
       - name: Build plugin
         run: npm run build
 
-      - name: Sign plugin
-        run: npx --yes @grafana/sign-plugin@latest
-        env:
-          GRAFANA_ACCESS_POLICY_TOKEN: ${{ secrets.GRAFANA_ACCESS_POLICY_TOKEN }}
+      # - name: Sign plugin
+      #   run: npx --yes @grafana/sign-plugin@latest
+      #   env:
+      #     GRAFANA_ACCESS_POLICY_TOKEN: ${{ secrets.GRAFANA_ACCESS_POLICY_TOKEN }}
 
       - name: Package plugin
         id: package-plugin
