@@ -9,19 +9,13 @@ Actively maintained fork of the abandoned Business Table plugin by Volkov Labs.
 - JSON eye icon show/hide toggle
 - All original Business Table features (inline editing, nested rows, pagination, etc.)
 
+
 ## 📋 Requirements
 - Grafana >= 11.0.0
 
 ## 🚀 Installation
 Search for **BizGrid** in the Grafana plugin catalog.
 
-### 🖥️ Grafana CLI
-
-Run the following command in your terminal:
-
-```bash
-grafana cli plugins install bizgrid-panel
-```
 
 ## ✨ Attribution
 Based on [Business Table](https://github.com/volkovlabs/business-table)
