@@ -1,0 +1,54 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+  id-token: write
+  attestations: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build plugin
+        run: npm run build
+
+      - name: Sign plugin
+        run: npx --yes @grafana/sign-plugin@latest
+        env:
+          GRAFANA_ACCESS_POLICY_TOKEN: ${{ secrets.GRAFANA_ACCESS_POLICY_TOKEN }}
+
+      - name: Package plugin
+        id: package-plugin
+        run: |
+          mv dist narayanadev97-bizgrid-panel
+          zip -r narayanadev97-bizgrid-panel-${{ github.ref_name }}.zip narayanadev97-bizgrid-panel/
+          sha1sum narayanadev97-bizgrid-panel-${{ github.ref_name }}.zip > narayanadev97-bizgrid-panel-${{ github.ref_name }}.zip.sha1
+
+      - name: Attest
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-path: narayanadev97-bizgrid-panel-${{ github.ref_name }}.zip
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            narayanadev97-bizgrid-panel-${{ github.ref_name }}.zip
+            narayanadev97-bizgrid-panel-${{ github.ref_name }}.zip.sha1
+          generate_release_notes: true
