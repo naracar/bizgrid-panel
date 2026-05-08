@@ -4,11 +4,11 @@
     "grafanaDependency": ">=11.0.0",
     "plugins": []
   },
-  "id": "bizgrid-panel",
+  "id": "narayanadev97-bizgrid-panel",
   "info": {
     "author": {
       "name": "Narayana",
-      "url": "https://github.com/your-org/bizgrid-panel"
+      "url": "https://github.com/naracar/bizgrid-panel"
     },
     "description": "Advanced table panel with draggable column resize, configurable JSON preview, and enhanced link behavior. Actively maintained fork of the abandoned Business Table plugin.",
     "keywords": [
@@ -21,15 +21,15 @@
     "links": [
       {
         "name": "Documentation",
-        "url": "https://github.com/your-org/bizgrid-panel/blob/main/README.md"
+        "url": "https://github.com/naracar/bizgrid-panel/blob/main/README.md"
       },
       {
         "name": "GitHub",
-        "url": "https://github.com/your-org/bizgrid-panel"
+        "url": "https://github.com/naracar/bizgrid-panel"
       },
       {
         "name": "Changelog",
-        "url": "https://github.com/your-org/bizgrid-panel/blob/main/CHANGELOG.md"
+        "url": "https://github.com/naracar/bizgrid-panel/blob/main/CHANGELOG.md"
       }
     ],
     "logos": {
