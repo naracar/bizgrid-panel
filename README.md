@@ -22,4 +22,4 @@ Based on [Business Table](https://github.com/volkovlabs/business-table)
 by Volkov Labs, licensed under Apache 2.0.
 
 ## 📜 License
-Apache License 2.0 - see [LICENSE](LICENSE)
+Apache License 2.0 - see [LICENSE](https://github.com/naracar/bizgrid-panel/blob/main/LICENSE)
