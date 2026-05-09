@@ -12,18 +12,17 @@ jest.mock('file-saver', () => ({
 }));
 
 /**
- * xlsx mock
+ * exceljs mock
  */
-jest.mock('xlsx', () => ({
-  utils: {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    aoa_to_sheet: jest.fn(),
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    book_new: jest.fn(),
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    book_append_sheet: jest.fn(),
-  },
-  write: jest.fn(),
+jest.mock('exceljs', () => ({
+  default: jest.fn().mockImplementation(() => ({
+    addWorksheet: jest.fn().mockReturnValue({
+      addRows: jest.fn(),
+    }),
+    xlsx: {
+      writeBuffer: jest.fn().mockResolvedValue(new ArrayBuffer(8)),
+    },
+  })),
 }));
 
 /**
@@ -60,25 +59,25 @@ describe('downloadFile', () => {
       jest.clearAllMocks();
     });
 
-    it('Should create a xls file with the correct name and content', () => {
+    it('Should create a xls file with the correct name and content', async () => {
       const content = [
         ['Header1', 'Header2'],
         ['Data1', 'Data2'],
       ];
       const fileName = 'devices';
-      downloadXlsx(content, fileName);
+      await downloadXlsx(content, fileName);
 
       expect(saveAs).toHaveBeenCalledTimes(1);
       expect(saveAs).toHaveBeenCalledWith(expect.any(Blob), `${fileName}.xlsx`);
     });
 
-    it('Should use default file name "download" if no fileName is provided', () => {
+    it('Should use default file name "download" if no fileName is provided', async () => {
       const content = [
         ['Header1', 'Header2'],
         ['Data1', 'Data2'],
       ];
 
-      downloadXlsx(content);
+      await downloadXlsx(content);
 
       expect(saveAs).toHaveBeenCalledWith(expect.any(Blob), 'download.xlsx');
     });

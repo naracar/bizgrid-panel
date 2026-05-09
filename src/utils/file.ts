@@ -1,6 +1,6 @@
 import { DataFrame } from '@grafana/data';
+import excelJs from 'exceljs';
 import { saveAs } from 'file-saver';
-import { utils, write } from 'xlsx';
 
 import { BASE64_MEDIA_HEADER_REGEX, MEDIA_TYPES_SYMBOLS } from '@/constants';
 import { SupportedFileType } from '@/types';
@@ -19,9 +19,8 @@ export const downloadCsv = (content: string, fileName = 'download') => {
  * @param content
  * @param fileName
  */
-export const downloadXlsx = (content: unknown[][], fileName = 'download', tableName?: string) => {
-  const ws = utils.aoa_to_sheet(content);
-  const wb = utils.book_new();
+export const downloadXlsx = async (content: unknown[][], fileName = 'download', tableName?: string) => {
+  const workbook = new excelJs.Workbook();
 
   /**
    * tableName use for sheet name
@@ -30,11 +29,13 @@ export const downloadXlsx = (content: unknown[][], fileName = 'download', tableN
    */
   const sheetName = (tableName ?? 'Sheet1').substring(0, 31);
 
-  utils.book_append_sheet(wb, ws, sheetName);
+  const worksheet = workbook.addWorksheet(sheetName);
 
-  const blob = write(wb, { bookType: 'xlsx', type: 'array' });
+  worksheet.addRows(content as unknown[][]);
 
-  const fileData = new Blob([blob], {
+  const buffer = await workbook.xlsx.writeBuffer();
+
+  const fileData = new Blob([buffer], {
     type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8',
   });
 

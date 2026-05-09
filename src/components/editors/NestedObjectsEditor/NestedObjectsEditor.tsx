@@ -42,7 +42,6 @@ export const NestedObjectsEditor: React.FC<Props> = ({ context: { data }, value,
   const [editName, setEditName] = useState('');
 
   /**
-   /**
    * Change Items
    */
   const onChangeItems = useCallback(
@@ -183,6 +182,7 @@ export const NestedObjectsEditor: React.FC<Props> = ({ context: { data }, value,
                         className={styles.actionButton}
                         icon="times"
                         size="sm"
+                        aria-label="Cancel"
                         onClick={onCancelEdit}
                         {...testIds.buttonCancelRename.apply()}
                       />
@@ -192,6 +192,7 @@ export const NestedObjectsEditor: React.FC<Props> = ({ context: { data }, value,
                         className={styles.actionButton}
                         icon="save"
                         size="sm"
+                        aria-label="Save"
                         onClick={onSaveName}
                         disabled={!isUpdatedNameValid}
                         tooltip={isUpdatedNameValid ? '' : 'Name is empty or table with the same name already exists.'}
@@ -212,6 +213,7 @@ export const NestedObjectsEditor: React.FC<Props> = ({ context: { data }, value,
                         variant="secondary"
                         fill="text"
                         size="sm"
+                        aria-label="Edit"
                         className={styles.actionButton}
                         onClick={() => {
                           /**
@@ -228,6 +230,7 @@ export const NestedObjectsEditor: React.FC<Props> = ({ context: { data }, value,
                       variant="secondary"
                       fill="text"
                       size="sm"
+                      aria-label="Delete"
                       className={styles.actionButton}
                       onClick={() => {
                         /**
